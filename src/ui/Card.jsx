@@ -1,9 +1,14 @@
 import styled from "styled-components";
+import { usePosts } from "../data/usePostData";
 
 const StyledCard = styled.div``;
 
 function Card() {
-  return <StyledCard>Card</StyledCard>;
+  const { isLoading, posts } = usePosts();
+
+  if (isLoading) return "loading";
+
+  return <StyledCard>{posts.title}</StyledCard>;
 }
 
 export default Card;
